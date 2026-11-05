@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Securiy｜セキュリティ・AI・データを3分で</title>
+<meta name="description" content="Securiy は、セキュリティ・AI・データのニュースを1〜3分で解説する YouTube チャンネルです。出典を明記し、今日できる対策を1つ届けます。">
+<meta property="og:title" content="Securiy｜セキュリティ・AI・データを3分で">
+<meta property="og:description" content="セキュリティ・AI・データのニュースを1〜3分で。出典つきで、今日できる対策を1つ。">
+<meta property="og:image" content="assets/logo.png">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* フラットカラーのみ（グラデーション・ぼかし・影なし）。色は動画と同じ */
+:root{--navy:#0B1330;--ink:#0F1F3D;--bg:#F5F6FA;--white:#fff;--line:#D6DDEB;--blue:#2F55D4;--blue-soft:#E8EDFB;
+  --lime:#BEDD5A;--lime-soft:#EEF5D6;--red:#D23A25;--green:#1FA67A;--green-soft:#E3F4EC;--grey:#5B667E}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;font-weight:400}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+em{font-style:normal}
+.mark{color:var(--blue);position:relative;z-index:0}
+.mark::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.28em;background:var(--lime);z-index:-1}
+
+/* header */
+header{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+header img{height:30px;width:auto;display:block}
+header nav{display:flex;gap:24px;font-size:15px;font-weight:500}
+header nav a{text-decoration:none;color:var(--grey)}
+header nav a:hover{color:var(--blue)}
+@media (max-width:640px){header nav{display:none}}
+
+/* hero */
+.hero{background:var(--navy);color:#fff;overflow:hidden;position:relative}
+.hero .wrap{padding-top:96px;padding-bottom:104px;position:relative;z-index:1}
+.eyebrow{display:inline-block;font-size:14px;font-weight:700;letter-spacing:.08em;color:var(--navy);background:var(--lime);border-radius:999px;padding:4px 14px}
+.hero h1{font-size:clamp(34px,6vw,64px);line-height:1.25;font-weight:700;margin:22px 0 18px;letter-spacing:.01em}
+.hero h1 em{color:var(--lime)}
+.hero p.lead{font-size:clamp(16px,2.2vw,20px);max-width:620px;color:#D9DFF0}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:16px;border-radius:999px;padding:14px 26px;border:2px solid transparent;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:#fff;color:var(--navy)}
+.btn.ghost{border-color:#3A4570;color:#fff}
+.btn svg{width:22px;height:22px}
+.btn[aria-disabled="true"]{opacity:.55;pointer-events:none}
+/* hero tiles (flat squares, slow drift) */
+.tiles{position:absolute;right:-200px;top:40px;display:grid;grid-template-columns:repeat(6,72px);gap:18px;opacity:.9}
+.tiles i{width:72px;height:72px;border-radius:14px;background:#12296B;animation:pulse 6s ease-in-out infinite}
+.tiles i.l{background:var(--lime)} .tiles i.d{background:#101B3D}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
+@media (max-width:1100px){.tiles{opacity:.25}}
+
+/* sections */
+section{padding:88px 0}
+.sec-head{margin-bottom:40px}
+.sec-head .k{font-size:14px;font-weight:700;color:var(--blue);letter-spacing:.08em}
+.sec-head h2{font-size:clamp(26px,3.6vw,38px);line-height:1.35;margin-top:6px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:860px){.grid3{grid-template-columns:1fr}}
+.card{background:var(--white);border:2px solid var(--line);border-radius:22px;padding:28px}
+.card .ic{width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.card h3{font-size:22px;margin-bottom:8px}
+.card p{color:var(--grey);font-size:15.5px}
+.ic.b{background:var(--blue-soft)} .ic.g{background:var(--green-soft)} .ic.l{background:var(--lime-soft)}
+
+/* promise */
+.promise{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+@media (max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+.step{border:2px solid var(--line);border-radius:18px;padding:22px;counter-increment:s;background:var(--bg)}
+.step::before{content:counter(s);display:inline-flex;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;align-items:center;justify-content:center;margin-bottom:12px}
+.step h3{font-size:18px;margin-bottom:6px}
+.step p{font-size:14.5px;color:var(--grey)}
+
+/* videos */
+.videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.video{background:var(--white);border:2px solid var(--line);border-radius:20px;overflow:hidden}
+.video .frame{aspect-ratio:16/9;background:var(--navy)}
+.video iframe{width:100%;height:100%;border:0;display:block}
+.video .meta{padding:16px 18px}
+.video .meta h3{font-size:17px;line-height:1.5}
+.empty{border:2px dashed var(--line);border-radius:20px;padding:40px 24px;text-align:center;color:var(--grey);background:var(--white)}
+.empty strong{display:block;color:var(--ink);font-size:20px;margin-bottom:6px}
+
+/* final cta */
+.final{background:var(--blue);color:#fff;border-radius:28px;padding:56px 32px;text-align:center}
+.final h2{font-size:clamp(24px,3.4vw,34px);margin-bottom:10px}
+.final p{color:#DCE4FB;margin-bottom:26px}
+.final .btn.primary{color:var(--blue)}
+
+footer{padding:40px 0 56px;color:var(--grey);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+footer img{height:26px}
+
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.tiles i{animation:none}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="#" aria-label="Securiy トップ"><img src="assets/logo.svg" alt="Securiy" width="100" height="30"></a>
+    <nav aria-label="ページ内リンク">
+      <a href="#topics">扱うテーマ</a>
+      <a href="#promise">動画のつくり方</a>
+      <a href="#videos">動画</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="tiles" aria-hidden="true">
+    <i></i><i class="d"></i><i></i><i class="l"></i><i></i><i class="l"></i>
+    <i class="d"></i><i></i><i class="l"></i><i></i><i class="d"></i><i></i>
+    <i></i><i class="l"></i><i></i><i class="d"></i><i></i><i class="d"></i>
+    <i class="d"></i><i></i><i class="d"></i><i></i><i class="l"></i><i></i>
+  </div>
+  <div class="wrap">
+    <span class="eyebrow">YouTube チャンネル</span>
+    <h1>セキュリティ・AI・データを<br><em>3分で</em>わかる。</h1>
+    <p class="lead">Securiy は、話題のニュースを1〜3分で解説するチャンネルです。何が起きたのか、なぜ起きたのか、そして<strong>今日できる対策</strong>を1つ。出典つきでお届けします。</p>
+    <div class="cta">
+      <a class="btn primary js-channel" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="#D23A25"/><path d="M10 9l5 3-5 3z" fill="#fff"/></svg>
+        チャンネルを見る
+      </a>
+      <a class="btn ghost js-subscribe" href="#" target="_blank" rel="noopener">チャンネル登録</a>
+    </div>
+  </div>
+</section>
+
+<section id="topics">
+  <div class="wrap">
+    <div class="sec-head rv"><div class="k">TOPICS</div><h2>扱うテーマは<span class="mark">3つ</span></h2></div>
+    <div class="grid3">
+      <article class="card rv">
+        <div class="ic b"><svg width="36" height="36" viewBox="0 0 64 64" fill="none" stroke="#2F55D4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M32 7l20 8v15c0 13-9 22-20 27C21 52 12 43 12 30V15z"/><path d="M23 32l7 7 12-13"/></svg></div>
+        <h3>セキュリティ</h3>
+        <p>脆弱性や不正アクセスのニュースを、守る側の目線で。攻撃の手順ではなく、確かめることと対策を伝えます。</p>
+      </article>
+      <article class="card rv">
+        <div class="ic l"><svg width="36" height="36" viewBox="0 0 64 64" fill="none" stroke="#0F1F3D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="18" width="40" height="32" rx="9"/><circle cx="25" cy="34" r="4" fill="#0F1F3D"/><circle cx="39" cy="34" r="4" fill="#0F1F3D"/><path d="M32 18V9M28 9h8"/></svg></div>
+        <h3>AI</h3>
+        <p>AIツールやAIエージェントの安全な使い方。便利さの裏にある落とし穴と、権限の絞り方を解説します。</p>
+      </article>
+      <article class="card rv">
+        <div class="ic g"><svg width="36" height="36" viewBox="0 0 64 64" fill="none" stroke="#1FA67A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="32" cy="15" rx="18" ry="6"/><path d="M14 15v34c0 3 8 6 18 6s18-3 18-6V15M14 32c0 3 8 6 18 6s18-3 18-6"/></svg></div>
+        <h3>データ</h3>
+        <p>情報漏えいやプライバシーの話題を、自分ごととして。漏れたときに今日できることまで案内します。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="promise" class="promise">
+  <div class="wrap">
+    <div class="sec-head rv"><div class="k">OUR RULES</div><h2>動画づくりで<span class="mark">守っていること</span></h2></div>
+    <div class="steps">
+      <div class="step rv"><h3>1動画1メッセージ</h3><p>1〜3分で、伝えることは1つに絞ります。</p></div>
+      <div class="step rv"><h3>出典を明記</h3><p>事実には出典をつけ、概要欄にURLを載せます。出典のない数字は使いません。</p></div>
+      <div class="step rv"><h3>防御目線</h3><p>悪用できる手順は扱いません。守る側に必要なことだけを伝えます。</p></div>
+      <div class="step rv"><h3>今日できる対策</h3><p>不安で終わらせず、最後に「今日やること」を1つ示します。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="wrap">
+    <div class="sec-head rv"><div class="k">VIDEOS</div><h2>最新の動画</h2></div>
+    <!-- 動画を載せるには、下の VIDEOS に YouTube の動画ID と題名を追加する（公開済みの動画だけ） -->
+    <div class="videos js-videos rv"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="final rv">
+      <h2>ニュースの「で、何をすれば？」に3分で答えます</h2>
+      <p>新しい動画をお知らせするので、チャンネル登録をお願いします。</p>
+      <a class="btn primary js-subscribe" href="#" target="_blank" rel="noopener">チャンネル登録する</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo.svg" alt="Securiy" width="87" height="26">
+    <div>動画のナレーションには AI 音声（Gemini TTS）を使用しています。</div>
+    <div>© <span class="js-year"></span> Securiy</div>
+  </div>
+</footer>
+
+<script>
+// ===== ここを編集 =====
+const CHANNEL_URL = "";          // 例: "https://www.youtube.com/@securiy"（未設定のあいだはボタンを無効表示）
+const VIDEOS = [
+  // { id: "XXXXXXXXXXX", title: "動画のタイトル" },   // 公開済みの動画だけ（非公開の動画は埋め込めません）
+];
+// =====================
+document.querySelectorAll(".js-channel,.js-subscribe").forEach(a => {
+  if (!CHANNEL_URL) { a.setAttribute("aria-disabled", "true"); a.removeAttribute("href"); return; }
+  a.href = a.classList.contains("js-subscribe") ? CHANNEL_URL.replace(/\/$/, "") + "?sub_confirmation=1" : CHANNEL_URL;
+});
+const box = document.querySelector(".js-videos");
+if (VIDEOS.length) {
+  box.innerHTML = VIDEOS.map(v => `<article class="video"><div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.id)}" title="${v.title.replace(/"/g, "&quot;")}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="meta"><h3></h3></div></article>`).join("");
+  box.querySelectorAll(".meta h3").forEach((h, i) => h.textContent = VIDEOS[i].title);
+} else {
+  box.className = "rv";
+  box.innerHTML = `<div class="empty"><strong>最初の動画を準備中です</strong>公開したら、ここに並びます。</div>`;
+}
+document.querySelector(".js-year").textContent = new Date().getFullYear();
+const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .15 }) : null;
+document.querySelectorAll(".rv").forEach(el => io ? io.observe(el) : el.classList.add("in"));
+</script>
+</body>
+</html>
